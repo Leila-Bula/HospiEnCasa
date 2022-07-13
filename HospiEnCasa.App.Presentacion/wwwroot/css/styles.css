@@ -1,0 +1,350 @@
+:root{
+
+    --blanco: #ffffff;
+    --negro: #212121;
+    --primario: #b80a0a;
+    --secundario: #0097a7;
+    --azuloscuro: #096c6c;
+    --verdecin: #009988;
+    --gris: #757575; 
+    --grisMedio: #75757570; 
+    --grisClaro: #dfe9f2; 
+    --azul: #205EC4;
+}
+
+/* GLOBALES */
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box; /* hack para box-model*/
+    /* scroll-snap-type: y mandatory; */
+}
+
+/* scroll snap 
+.servicios,
+.vinculos,
+.formulario{
+    scroll-snap-align: top;
+    scroll-snap-stop: always;
+}*/
+
+*,*:before, *:after {
+
+    box-sizing: inherit;
+}
+
+body {
+    font-size: 16px; /* 1rem=10px */
+    font-family: 'Krub', sans-serif;
+    background-image: linear-gradient(to bottom,var(--grisMedio) 0%, var(--grisClaro)100%);
+}
+
+.contenedor{
+    
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+.boton{
+    background-color: var(--azul);
+    color:var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: .5rem;
+    width: 90%;
+    text-align: center;
+    border: none;
+}
+
+@media (min-width: 768px) {
+    .boton{
+
+        width: auto;
+    }
+    
+}
+
+.boton:hover{
+    cursor: pointer;
+}
+
+/* Titulo */
+.titulo {
+    font-size: 4rem;
+    font-style: italic;
+ 
+}
+
+/* Tipografia */
+
+h1{
+    
+    font-size: 5rem;
+    font-family: 'Play', sans-serif;
+   
+}
+
+h2{
+    
+    font-size: 3.8rem;
+    font-family: 'Play', sans-serif;
+   
+}
+
+h3{
+    font-size: 1.8rem;
+}
+
+h1,h2,h3{
+    text-align: center;
+}
+
+
+/* TITULO pequeño */
+
+.title {
+    font-size: 4.8rem;
+    color: var(--negro);
+    font-family: 'Play', sans-serif;
+    
+}
+
+/* Utilidades */
+.ancho-100{
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .ancho-100{
+        width: auto;
+    }
+}
+
+.flex{
+    display: flex;
+}
+
+.alinear-derecha{
+    justify-content: flex-end;
+}
+
+.color-enviar .boton{
+    background-color: var(--azul);
+}
+
+/* NAVEGACION PRINCIPAL */
+
+.nav-bg{
+
+    background-color: var(--azuloscuro);
+
+}
+
+/* LINKS */
+.vinculos{
+
+    display: flex;
+    flex-direction: column;
+    
+
+}
+
+@media (min-width: 768px) {
+    .vinculos{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.vinculos a {
+    display: block;
+    text-align: center;
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 1rem;
+   
+}
+
+/* efecto CAMBIA DE COLOR LINK */
+.vinculos a:hover{
+
+    background-color: #0ab878cc;
+    color: var(--negro);
+    
+}
+
+.entity-link a:hover{
+
+    background-color: #232927cc;
+    color: var(--negro);
+    border-radius: 50%;
+    
+}
+
+
+
+.imagen{
+
+    background-image: url(../img/fibra1.jpg);
+    background-repeat: no-repeat;
+    background-size:cover;
+    height: 200px;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.contenido-imagen{
+    position: absolute;
+    background-color: rgb( 10 184 120 /70%);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.contenido-imagen h2{
+
+    color: var(--negro);
+    font-size: 3rem;
+    font-style: italic;
+}
+.contenido-imagen p{
+
+    color: var(--negro);
+    font-weight: bold;
+    
+}
+
+.ubicar{
+    
+    display: flex;
+    align-items: flex-end;
+    
+}
+
+.sombra{
+
+    box-shadow: 0px 5px 15px 0px rgb(112, 112, 112,0.48);
+    background-color: var(--blanco);
+    padding: 2rem; 
+    border-radius: 1rem
+}
+
+/* Acomoda las secciones Servicios */
+@media (min-width: 768px) {
+    
+    .servicios{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 2rem;
+    }
+    
+}
+
+.servicio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.servicio h3{
+    color: var(--verdecin);
+    font-weight: bold;
+}
+
+.servicio p{
+    text-align: center;
+    line-height: 2;
+}
+
+.iconos{
+    height: 15rem;
+    width: 15rem;
+    display: flex;
+    background-color: var(--grisMedio);
+    border-radius: 50%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.formulario{
+    background-color: var(--grisMedio);
+    width: min( 90rem, 100% );/*utiliza el valor mas pequeño*/
+    margin: 0 auto;
+    border-radius: 2rem;
+    padding: 2rem;
+}
+
+.formulario fieldset{
+    border: none;
+}
+
+.formulario legend{
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--verdecin);
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+@media (min-width: 768px) {
+
+    .contenedor-campos{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    column-gap: 1rem;
+    }
+}
+
+
+.campo-contacto{
+    margin-bottom: 1rem;
+}
+
+.campo-contacto label{
+    color: var(--negro);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.input-text{
+    width: 100%;
+    border: none;
+    border-radius: .5rem;
+    padding: 1.5rem;
+}
+
+.contenedor-campos textarea{
+    height: 15rem;
+}
+
+.campo-contacto:nth-child(3),
+.campo-contacto:nth-child(4){
+    grid-column: 1/3;
+}
+
+.campo{
+    margin-bottom: 1rem;
+}
+
+.campo label{
+    color: var(--negro);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.footer {
+    text-align: center;
+}
+

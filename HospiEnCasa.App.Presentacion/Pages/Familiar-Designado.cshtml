@@ -1,0 +1,77 @@
+@page
+@model FamiliarDesignadoModel
+@{
+    ViewData["Title"] = "Familiar Designado";
+}
+
+<main class="contenedor sombra">
+    <section>
+        <h2>Datos de Familiar Designado</h2>
+
+        
+        <form class="formulario">
+
+            <fieldset>
+
+                <div class="contenedor-campos">
+
+                    <div class="campo">
+                        <label>Nombre</label>
+                        <input class="input-text" type="text" placeholder="Nombre" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>Apellidos</label>
+                        <input class="input-text" type="text" placeholder="Apellidos" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>N° Documento</label>
+                        <input class="input-text" type="text" placeholder="Documento de identidad" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>Teléfono</label>
+                        <input class="input-text" type="number" placeholder="N° Telefónico" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>Género</label>
+                        <select class="input-text">
+                            <option value="masculino">-- Seleccione --</option>
+                            <option value="masculino">Masculino</option>
+                            <option value="femenino">Femenino</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label>Documento del Paciente</label>
+                        <input class="input-text" type="text" placeholder="Documento Paciente" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>Parentesco</label>
+                        <input class="input-text" type="text" placeholder="Parentesco con paciente" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>Correo Eletrónico</label>
+                        <input class="input-text" type="email" placeholder="E-mail" required>
+                    </div>
+                    
+
+                </div>  <!-- .contenedor-campos   -->
+
+                <div class="alinear-derecha flex color-enviar">
+                    <input class="boton" type="submit" value="Registrar">
+                </div>
+
+            </fieldset>
+
+        </form>
+
+    </section>
+
+</main>
+
+</html>

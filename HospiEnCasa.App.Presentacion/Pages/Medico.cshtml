@@ -1,0 +1,72 @@
+@page
+@model MedicoModel;
+@{
+    ViewData["Title"] = "Médico";
+}
+
+<main class="contenedor sombra">
+    <section>
+        <h2>Datos de Médico</h2>
+
+        
+        <form class="formulario">
+
+            <fieldset>
+
+                <div class="contenedor-campos">
+
+                    <div class="campo">
+                        <label>Nombre</label>
+                        <input class="input-text" type="text" placeholder="Nombre" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>Apellidos</label>
+                        <input class="input-text" type="text" placeholder="Apellidos" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>N° Documento</label>
+                        <input class="input-text" type="text" placeholder="Documento de identidad" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>Teléfono</label>
+                        <input class="input-text" type="number" placeholder="N° Telefónico" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>Género</label>
+                        <select class="input-text">
+                            <option value="masculino">-- Seleccione --</option>
+                            <option value="masculino">Masculino</option>
+                            <option value="femenino">Femenino</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label>Especialidad</label>
+                        <input class="input-text" type="text" placeholder="Especialidad" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>Registro</label>
+                        <input class="input-text" type="text" placeholder="N° Registro" required>
+                    </div>
+                    
+
+                </div>  <!-- .contenedor-campos   -->
+
+                <div class="alinear-derecha flex color-enviar">
+                    <input class="boton" type="submit" value="Registrar">
+                </div>
+
+            </fieldset>
+
+        </form>
+
+    </section>
+
+</main>
+
+</html>
