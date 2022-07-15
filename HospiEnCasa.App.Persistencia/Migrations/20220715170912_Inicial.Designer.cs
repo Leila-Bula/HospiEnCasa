@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HospiEnCasa.App.Persistencia.Migrations
 {
     [DbContext(typeof(AppContext))]
-    [Migration("20220714224723_Inicial")]
+    [Migration("20220715170912_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,6 +52,9 @@ namespace HospiEnCasa.App.Persistencia.Migrations
                     b.Property<string>("Discriminator")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Documento")
+                        .HasColumnType("int");
 
                     b.Property<int>("Genero")
                         .HasColumnType("int");

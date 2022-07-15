@@ -51,6 +51,9 @@ namespace HospiEnCasa.App.Persistencia.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Documento")
+                        .HasColumnType("int");
+
                     b.Property<int>("Genero")
                         .HasColumnType("int");
 
