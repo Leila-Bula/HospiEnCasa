@@ -14,6 +14,13 @@ namespace HospiEnCasa.App.Persistencia
         public DbSet<SignoVital> SignoVitales {get;set;}
         public DbSet<SugerenciaCuidado> SugerenciaCuidados {get;set;}
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Persona>()
+                .Property(b => b.Id)
+                .ValueGeneratedOnAdd();
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

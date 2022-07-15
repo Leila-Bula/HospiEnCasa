@@ -1,0 +1,37 @@
+﻿@page
+@model PacientesModel;
+@using HospiEnCasa.App.Dominio;
+@{
+  ViewData["Title"] = "Pacientes";
+}
+<main class="contenedor sombra">
+  <h1>PACIENTES REGISTRADOS</h1>
+  <table class="tablaPacientes">
+    <thead>
+      <tr>
+        <td>Id</td>
+        <td>Nombres</td>
+        <td>Apellidos</td>
+        <td>Ciudad</td>
+        <td>Más</td>
+      </tr>
+    </thead>
+    <tbody>
+      @{
+        foreach (var paciente in Model.Pacientes)
+        {
+            <tr>
+              <td>@paciente.Id</td>
+              <td>@paciente.Nombre</td>
+              <td>@paciente.Apellidos</td>
+              <td>@paciente.Ciudad</td>
+              <td><a asp-page="/Paciente"><bold>Detalles</bold></a></td>
+            </tr>
+        }
+      }
+    </tbody>
+  </table>
+  <button class="boton" id="actPacientes">Actualizar</button>
+</main>
+
+</html>

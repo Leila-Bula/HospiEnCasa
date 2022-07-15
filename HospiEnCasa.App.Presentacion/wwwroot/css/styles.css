@@ -348,3 +348,15 @@ h1,h2,h3{
     text-align: center;
 }
 
+.tablaPacientes,td,tr{
+    border: #212121 solid 1px;
+    border-collapse: collapse;
+    width: -webkit-fill-available;
+    
+}
+
+#actPacientes{
+    background-color: mediumaquamarine;
+    color: black;
+    width: -webkit-fill-available;
+}

@@ -1,5 +1,6 @@
 @page
 @model PacienteModel;
+@using HospiEnCasa.App.Dominio;
 @{
     ViewData["Title"] = "Paciente";
 }
@@ -7,9 +8,7 @@
 <main class="contenedor sombra">
     <section>
         <h2>Datos de Paciente</h2>
-
-        
-        <form class="formulario">
+        <form class="formulario" method="post">
 
             <fieldset>
 
@@ -17,12 +16,12 @@
 
                     <div class="campo">
                         <label>Nombre</label>
-                        <input class="input-text" type="text" placeholder="Nombre" required>
+                        <input class="input-text" type="text" placeholder="Nombre" asp-for="NuevoPaciente.Nombre" required>
                     </div>
 
                     <div class="campo">
                         <label>Apellidos</label>
-                        <input class="input-text" type="text" placeholder="Apellidos" required>
+                        <input class="input-text" type="text" placeholder="Apellidos" asp-for="NuevoPaciente.Apellidos" required>
                     </div>
 
                     <div class="campo">
@@ -32,12 +31,12 @@
 
                     <div class="campo">
                         <label>Teléfono</label>
-                        <input class="input-text" type="number" placeholder="N° Telefónico" required>
+                        <input class="input-text" type="number" placeholder="N° Telefónico" asp-for="NuevoPaciente.Telefono" required>
                     </div>
 
                     <div class="campo">
                         <label>Género</label>
-                        <select class="input-text">
+                        <select class="input-text" asp-for="NuevoPaciente.Genero" required>
                             <option value="masculino">-- Seleccione --</option>
                             <option value="masculino">Masculino</option>
                             <option value="femenino">Femenino</option>
@@ -46,28 +45,28 @@
 
                     <div class="campo">
                         <label>Dirección</label>
-                        <input class="input-text" type="text" placeholder="Dirección de Residencia" required>
+                        <input class="input-text" type="text" placeholder="Dirección de Residencia" asp-for="NuevoPaciente.Direccion" required>
                     </div>
 
                     <div class="campo">
                         <label>Ciudad</label>
-                        <input class="input-text" type="text" placeholder="Ciudad de Residencia" required>
+                        <input class="input-text" type="text" placeholder="Ciudad de Residencia" asp-for="NuevoPaciente.Ciudad" required>
                     </div>
 
                     <div class="campo">
                         <label>Fecha de Nacimiento</label>
-                        <input class="input-text" type="date" required>
+                        <input class="input-text" type="date" asp-for="NuevoPaciente.FechaNacimiento" required>
                     </div>
 
                     <div id="map" style="display: none;"></div>
                     <div class="campo">
                         <label>Latitud<span>(opcional)</span></label>
-                        <input id="lat" class="input-text" type="number" placeholder="Latitud" required>
+                        <input id="lat" class="input-text" placeholder="Latitud" asp-for="NuevoPaciente.Latitud">
                     </div>
 
                     <div class="campo">
                         <label>Longitud<span>(opcional)</span></label>
-                        <input id="lng" class="input-text" type="number" placeholder="Longitud" required>
+                        <input id="lng" class="input-text" placeholder="Longitud" asp-for="NuevoPaciente.Longitud">
                     </div>
                     
 
@@ -132,6 +131,8 @@
       </script>
 
     </section>
+
+
 
 </main>
 
