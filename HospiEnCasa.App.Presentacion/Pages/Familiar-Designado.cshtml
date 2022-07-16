@@ -9,7 +9,7 @@
         <h2>Datos de Familiar Designado</h2>
 
         
-        <form class="formulario">
+        <form class="formulario" method="post">
 
             <fieldset>
 
@@ -17,27 +17,27 @@
 
                     <div class="campo">
                         <label>Nombre</label>
-                        <input class="input-text" type="text" placeholder="Nombre" required>
+                        <input class="input-text" type="text" placeholder="Nombre" required asp-for="NuevoFamiliar.Nombre">
                     </div>
 
                     <div class="campo">
                         <label>Apellidos</label>
-                        <input class="input-text" type="text" placeholder="Apellidos" required>
+                        <input class="input-text" type="text" placeholder="Apellidos" required  asp-for="NuevoFamiliar.Apellidos">
                     </div>
 
                     <div class="campo">
                         <label>N° Documento</label>
-                        <input class="input-text" type="text" placeholder="Documento de identidad" required>
+                        <input class="input-text" type="text" placeholder="Documento de identidad" required  asp-for="NuevoFamiliar.Documento">
                     </div>
 
                     <div class="campo">
                         <label>Teléfono</label>
-                        <input class="input-text" type="number" placeholder="N° Telefónico" required>
+                        <input class="input-text" type="number" placeholder="N° Telefónico" required  asp-for="NuevoFamiliar.Telefono">
                     </div>
 
                     <div class="campo">
                         <label>Género</label>
-                        <select class="input-text">
+                        <select class="input-text"  asp-for="NuevoFamiliar.Genero">
                             <option value="masculino">-- Seleccione --</option>
                             <option value="masculino">Masculino</option>
                             <option value="femenino">Femenino</option>
@@ -46,17 +46,17 @@
 
                     <div class="campo">
                         <label>Documento del Paciente</label>
-                        <input class="input-text" type="text" placeholder="Documento Paciente" required>
+                        <input class="input-text" type="text" placeholder="Documento Paciente" required  >
                     </div>
 
                     <div class="campo">
                         <label>Parentesco</label>
-                        <input class="input-text" type="text" placeholder="Parentesco con paciente" required>
+                        <input class="input-text" type="text" placeholder="Parentesco con paciente" required  asp-for="NuevoFamiliar.Parentesco">
                     </div>
 
                     <div class="campo">
                         <label>Correo Eletrónico</label>
-                        <input class="input-text" type="email" placeholder="E-mail" required>
+                        <input class="input-text" type="email" placeholder="E-mail" required  asp-for="NuevoFamiliar.Correo">
                     </div>
                     
 

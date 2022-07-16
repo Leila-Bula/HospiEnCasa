@@ -5,20 +5,23 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using HospiEnCasa.App.Dominio;
+using HospiEnCasa.App.Persistencia;
 
 namespace HospiEnCasa.App.Presentacion.Pages
 {
     public class FamiliarDesignadoModel : PageModel
     {
-        private readonly ILogger<FamiliarDesignadoModel> _logger;
+        public readonly IRepositorioFamiliarDesignado RepositorioFamiliar;
+        [BindProperty]
+        public FamiliarDesignado NuevoFamiliar {get; set;}
 
-        public FamiliarDesignadoModel(ILogger<FamiliarDesignadoModel> logger)
-        {
-            _logger = logger;
+        public FamiliarDesignadoModel(IRepositorioFamiliarDesignado RepositorioFamiliar){
+            this.RepositorioFamiliar = RepositorioFamiliar;
+            NuevoFamiliar = new FamiliarDesignado();
         }
-
-        public void OnGet()
-        {
+        public void OnPost(){
+            NuevoFamiliar= RepositorioFamiliar.AddFamiliar(NuevoFamiliar);
         }
     }
 }

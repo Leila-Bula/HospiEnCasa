@@ -5,11 +5,12 @@ using HospiEnCasa.App.Persistencia;
 namespace HospiEnCasa.App.Consola
 {
     class Program
-    {   private static IRepositorioPaciente _repoPaciente = new RepositorioPaciente(new Persistencia.AppContext());
+    {  
+         private static IRepositorioPaciente _repoPaciente = new RepositorioPaciente(new Persistencia.AppContext());
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            //AddPaciente();
+            AddPaciente();
             BuscarPaciente(1);
         }
         private static void AddPaciente()
@@ -33,7 +34,14 @@ namespace HospiEnCasa.App.Consola
         private static void BuscarPaciente(int idPaciente)
         {
             var paciente = _repoPaciente.GetPaciente(idPaciente);
+            if (paciente != null)
+            {
             Console.WriteLine(paciente.Nombre+" "+paciente.Apellidos);
+                
+            }else
+            {
+                Console.WriteLine("vaciooooooooooooo");
+            }
         }
     }
 }
