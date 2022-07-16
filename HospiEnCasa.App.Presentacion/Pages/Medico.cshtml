@@ -9,7 +9,7 @@
         <h2>Datos de Médico</h2>
 
         
-        <form class="formulario">
+        <form class="formulario" method="post">
 
             <fieldset>
 
@@ -52,6 +52,11 @@
                     <div class="campo">
                         <label>Registro</label>
                         <input class="input-text" type="text" placeholder="N° Registro" asp-for="NuevoMedico.RegistroRethus" required>
+                    </div>
+
+                     <div class="campo">
+                        <label>Codigo</label>
+                        <input class="input-text" type="text" placeholder="N° Codigo" asp-for="NuevoMedico.Codigo" required>
                     </div>
                     
 

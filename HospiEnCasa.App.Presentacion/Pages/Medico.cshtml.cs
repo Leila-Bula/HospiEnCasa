@@ -17,7 +17,7 @@ namespace HospiEnCasa.App.Presentacion.Pages
         public Medico NuevoMedico {get;set;} 
         public MedicoModel(IRepositorioMedico repositorioMedico)
         {
-            repositorioMedico = repositorioMedico;
+          this.repositorioMedico = repositorioMedico;
             NuevoMedico = new Medico();
         }
 
