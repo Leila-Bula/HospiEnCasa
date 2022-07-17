@@ -11,22 +11,18 @@ namespace HospiEnCasa.App.Presentacion
 {
     public class PacientesModel : PageModel
     {
-        public List<Paciente> Pacientes {get;set;}
+
+        public readonly IRepositorioPaciente repoPaciente;
+        [BindProperty]
+        public IEnumerable<Paciente> Pacientes {get;set;}
+
+        public PacientesModel(IRepositorioPaciente repositorioPaciente){
+            repoPaciente = repositorioPaciente;
+        }
 
         public void OnGet()
         {
-            Pacientes = new List<Paciente>();
-            Pacientes.Add(new Paciente{
-                Nombre="Nicolay",
-                Apellidos="Perez",
-                Telefono ="3001645",
-                Genero = Genero.masculino,
-                Direccion = "Calle 4 No 7-4",
-                Longitud = 5.07062F,
-                Latitud = 75.52290F,
-                Ciudad = "Manizales",
-                FechaNacimiento = new DateTime(1990, 04, 12)
-            });
+            Pacientes=repoPaciente.GetAllPacientes();
         }
     }
 }
