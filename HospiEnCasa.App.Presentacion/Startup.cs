@@ -29,6 +29,7 @@ namespace HospiEnCasa.App.Presentacion
             services.AddSingleton<Persistencia.AppContext>();
             services.AddSingleton<Persistencia.IRepositorioPaciente, Persistencia.RepositorioPaciente>();
             services.AddSingleton<Persistencia.IRepositorioMedico, Persistencia.RepositorioMedico>();
+            services.AddSingleton<Persistencia.IRepositorioFamiliarDesignado, Persistencia.RepositorioFamiliar>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
