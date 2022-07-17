@@ -72,6 +72,34 @@ body {
     cursor: pointer;
 }
 
+.boton-detalles{
+    background-color: var(--azul);
+    color:var(--blanco);
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: .5rem;
+    width: 90%;
+    text-align: center;
+    border: none;
+}
+
+@media (min-width: 768px) {
+    .boton-detalles{
+
+        width: auto;
+    }
+    
+}
+
+.boton-detalles:hover{
+    cursor: pointer;
+    background-color: #072961;
+}
+
 /* Titulo */
 .titulo {
     font-size: 4rem;
@@ -359,4 +387,41 @@ h1,h2,h3{
     background-color: mediumaquamarine;
     color: black;
     width: -webkit-fill-available;
+}
+
+/*tablas*/
+
+table {  
+    margin: 45px;     
+    width: 480px; 
+    text-align: left;    
+    border-collapse: collapse; 
+}
+
+
+th {        
+    font-weight: bold;     
+    padding: 8px;     
+    background: #b9c9fe;
+    border-top: 4px solid #aabcfe;    
+    border-bottom: 1px solid #fff; 
+    text-align: center;
+}
+
+
+td {    
+    padding: 8px;     
+    background: #e8edff;     
+    border-bottom: 1px solid #fff; 
+    border-top: 1px solid transparent; 
+    margin: 1rem 0;
+}
+
+tr:hover td { 
+    background: #d0dafd; 
+    color: #339; 
+}
+
+td:nth-child(5){
+    text-align: center;
 }

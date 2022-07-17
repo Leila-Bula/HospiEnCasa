@@ -4,16 +4,19 @@
 @{
   ViewData["Title"] = "Pacientes";
 }
+
+<h2>PACIENTES REGISTRADOS</h2>
+
 <main class="contenedor sombra">
-  <h1>PACIENTES REGISTRADOS</h1>
+  
   <table class="tablaPacientes">
     <thead>
       <tr>
-        <td>Id</td>
-        <td>Nombres</td>
-        <td>Apellidos</td>
-        <td>Ciudad</td>
-        <td>Más</td>
+        <th>Doc. Id.</th>
+        <th>Nombres</th>
+        <th>Apellidos</th>
+        <th>Ciudad</th>
+        <th>Más</th>
       </tr>
     </thead>
     <tbody>
@@ -21,17 +24,21 @@
         foreach (var paciente in Model.Pacientes)
         {
             <tr>
-              <td>@paciente.Id</td>
+              <td>@paciente.Documento</td>
               <td>@paciente.Nombre</td>
               <td>@paciente.Apellidos</td>
               <td>@paciente.Ciudad</td>
-              <td><a asp-page="/Paciente"><bold>Detalles</bold></a></td>
+              <td><a class="boton-detalles" asp-page="/Paciente"><bold>Detalles</bold></a></td>
             </tr>
         }
       }
     </tbody>
   </table>
-  <button class="boton" id="actPacientes">Actualizar</button>
+
+  <div class="alinear-derecha flex">
+      <a class="boton" asp-page="/Index">Regresar</a>
+  </div>
+
 </main>
 
 </html>
