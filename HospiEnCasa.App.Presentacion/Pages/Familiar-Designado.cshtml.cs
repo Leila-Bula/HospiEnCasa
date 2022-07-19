@@ -15,13 +15,15 @@ namespace HospiEnCasa.App.Presentacion.Pages
         public readonly IRepositorioFamiliarDesignado RepositorioFamiliar;
         [BindProperty]
         public FamiliarDesignado NuevoFamiliar {get; set;}
+        [BindProperty]
+        public int idPaciente {get;set;}
 
         public FamiliarDesignadoModel(IRepositorioFamiliarDesignado RepositorioFamiliar){
             this.RepositorioFamiliar = RepositorioFamiliar;
             NuevoFamiliar = new FamiliarDesignado();
         }
         public void OnPost(){
-            NuevoFamiliar= RepositorioFamiliar.AddFamiliar(NuevoFamiliar);
+            NuevoFamiliar= RepositorioFamiliar.AddFamiliar(NuevoFamiliar, idPaciente);
         }
     }
 }
