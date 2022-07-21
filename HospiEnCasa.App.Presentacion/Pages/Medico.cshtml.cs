@@ -15,15 +15,25 @@ namespace HospiEnCasa.App.Presentacion.Pages
         public readonly IRepositorioMedico repositorioMedico;
         [BindProperty]
         public Medico NuevoMedico {get;set;} 
+        public bool isAdded {get;set;}
+        public bool Post {get;set;}
+
         public MedicoModel(IRepositorioMedico repositorioMedico)
         {
           this.repositorioMedico = repositorioMedico;
             NuevoMedico = new Medico();
+            Post=false;
         }
 
         public void OnPost()
         {
             NuevoMedico = repositorioMedico.AddMedico(NuevoMedico);
+            Post=true;
+            if(NuevoMedico!=null){
+                isAdded=true;
+            }else{
+                isAdded=false;
+            }
         }
     }
 }

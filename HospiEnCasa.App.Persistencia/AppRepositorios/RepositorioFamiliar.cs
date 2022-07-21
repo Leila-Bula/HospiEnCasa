@@ -14,9 +14,12 @@ namespace HospiEnCasa.App.Persistencia
             _appContext = appContext;
         }
 
-        FamiliarDesignado IRepositorioFamiliarDesignado.AddFamiliar(FamiliarDesignado Familiar)
+        FamiliarDesignado IRepositorioFamiliarDesignado.AddFamiliar(FamiliarDesignado Familiar, int idPaciente)
         {
             var FamiliarAdicionado = _appContext.FamiliarDesignados.Add(Familiar);
+            _appContext.SaveChanges();
+            var pacienteEncontrado =_appContext.Pacientes.Single(p=>p.Documento == idPaciente);
+            pacienteEncontrado.FamiliarDesignado=FamiliarAdicionado.Entity;
             _appContext.SaveChanges();
             return FamiliarAdicionado.Entity;
         }
@@ -40,6 +43,7 @@ namespace HospiEnCasa.App.Persistencia
             var FamiliarEncontrado = _appContext.FamiliarDesignados.FirstOrDefault(p => p.Id == FamiliarDesignado.Id);
             if (FamiliarEncontrado != null)
             {
+                FamiliarEncontrado.Documento = FamiliarDesignado.Documento;
                 FamiliarEncontrado.Nombre = FamiliarDesignado.Nombre;
                 FamiliarEncontrado.Apellidos = FamiliarDesignado.Apellidos;
                 FamiliarEncontrado.Telefono = FamiliarDesignado.Telefono;

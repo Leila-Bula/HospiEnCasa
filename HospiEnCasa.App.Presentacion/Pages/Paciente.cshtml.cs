@@ -14,18 +14,31 @@ namespace HospiEnCasa.App.Presentacion.Pages {
         public readonly IRepositorioPaciente repoPaciente;
         [BindProperty]
         public Paciente NuevoPaciente {get; set;}
+        public bool isAdded {get;set;}
+        public bool Post {get;set;}
 
         public PacienteModel(IRepositorioPaciente repositorioPaciente){
             repoPaciente = repositorioPaciente;
-            NuevoPaciente = new Paciente();
+            Post=false;
         }
 
-        /*public void OnGet(){
-            //Pacientes=repoPaciente.GetAllPacientes();
-        }*/
+        public IActionResult OnGet(int? idPaciente){
+            if(idPaciente.HasValue){
+                NuevoPaciente=repoPaciente.GetPaciente(idPaciente.Value);
+            }else{
+                NuevoPaciente = new Paciente(); 
+            }
+            return Page();
+        }
 
         public void OnPost(){
             NuevoPaciente=repoPaciente.AddPaciente(NuevoPaciente);
+            Post=true;
+            if(NuevoPaciente!=null){
+                isAdded=true;
+            }else{
+                isAdded=false;
+            }
         }
     }
 }

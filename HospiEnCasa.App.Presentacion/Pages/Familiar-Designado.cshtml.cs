@@ -17,13 +17,22 @@ namespace HospiEnCasa.App.Presentacion.Pages
         public FamiliarDesignado NuevoFamiliar {get; set;}
         [BindProperty]
         public int idPaciente {get;set;}
+        public bool isAdded {get;set;}
+        public bool Post {get;set;}
 
         public FamiliarDesignadoModel(IRepositorioFamiliarDesignado RepositorioFamiliar){
             this.RepositorioFamiliar = RepositorioFamiliar;
             NuevoFamiliar = new FamiliarDesignado();
+            Post=false;
         }
         public void OnPost(){
             NuevoFamiliar= RepositorioFamiliar.AddFamiliar(NuevoFamiliar, idPaciente);
+            Post=true;
+            if(NuevoFamiliar!=null){
+                isAdded=true;
+            }else{
+                isAdded=false;
+            }
         }
     }
 }

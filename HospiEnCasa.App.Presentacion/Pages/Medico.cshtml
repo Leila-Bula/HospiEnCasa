@@ -70,6 +70,19 @@
 
         </form>
 
+    @{
+        if(Model.Post){
+            if(Model.isAdded){
+                <script>
+                    alert("El Medico ha sido agregado correctamente")
+                </script>
+            }else{
+                <script>
+                    alert("Ha ocurrido un error al agregar el medico")
+                </script>
+            }
+        }
+    }
     </section>
 
 </main>

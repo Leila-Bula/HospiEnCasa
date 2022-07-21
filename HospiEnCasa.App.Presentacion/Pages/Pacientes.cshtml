@@ -28,7 +28,7 @@
               <td>@paciente.Nombre</td>
               <td>@paciente.Apellidos</td>
               <td>@paciente.Ciudad</td>
-              <td><a class="boton-detalles" asp-page="/Paciente"><bold>Detalles</bold></a></td>
+              <td><a class="boton-detalles" asp-page="/Paciente" asp-route-idPaciente="@paciente.Id"><bold>Detalles</bold></a></td>
             </tr>
         }
       }
