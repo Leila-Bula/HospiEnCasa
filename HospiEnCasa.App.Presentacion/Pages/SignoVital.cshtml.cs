@@ -20,10 +20,9 @@ namespace HospiEnCasa.App.Presentacion.Pages
 
         public SignoVitalModel(IRepositorioSigno repositorioSignoVital)
         {
-          this.repositorioSignoVital = repositorioSignoVital;
+            this.repositorioSignoVital = repositorioSignoVital;
             NuevoSigno = new List<SignoVital> {
                 new SignoVital {FechaHora = NuevoSigno.FechaHora,Valor =NuevoSigno.Valor, Signo = NuevoSigno.TipoSigno}
-
             };
 
             Post=false;
