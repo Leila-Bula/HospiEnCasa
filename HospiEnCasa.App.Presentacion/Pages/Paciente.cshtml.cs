@@ -16,28 +16,36 @@ namespace HospiEnCasa.App.Presentacion.Pages {
         public Paciente NuevoPaciente {get; set;}
         public bool isAdded {get;set;}
         public bool Post {get;set;}
+        public string Action {get;set;}
 
         public PacienteModel(IRepositorioPaciente repositorioPaciente){
             repoPaciente = repositorioPaciente;
             Post=false;
         }
 
-        public IActionResult OnGet(int? idPaciente){
+        public IActionResult OnGet(int? idPaciente, int? idMedico){
             if(idPaciente.HasValue){
                 NuevoPaciente=repoPaciente.GetPaciente(idPaciente.Value);
+                Action = "Actualizar";
+                if(idMedico.HasValue){
+                    repoPaciente.AddMedico(NuevoPaciente.Id,idMedico.Value);
+                }
             }else{
-                NuevoPaciente = new Paciente(); 
+                NuevoPaciente = new Paciente();
+                Action="Registrar";
             }
             return Page();
         }
 
         public void OnPost(){
-            NuevoPaciente=repoPaciente.AddPaciente(NuevoPaciente);
-            Post=true;
-            if(NuevoPaciente!=null){
-                isAdded=true;
-            }else{
-                isAdded=false;
+            if(Action=="Registrar"){
+                NuevoPaciente=repoPaciente.AddPaciente(NuevoPaciente);
+                Post=true;
+                if(NuevoPaciente!=null){
+                    isAdded=true;
+                }else{
+                    isAdded=false;
+                }
             }
         }
     }

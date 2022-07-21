@@ -1,0 +1,42 @@
+﻿@page
+@model AsignarModel;
+@using HospiEnCasa.App.Dominio;
+@{
+  ViewData["Title"] = "Asignar medico";
+}
+
+<main class="contenedor sombra">
+  <section>
+    <h1>Buscando medicos</h1>
+
+    <form>
+      <h3>Filtrar por Especialidad: </h3>
+      <select>
+        <option>Escoger</option>
+      </select>
+    </form>
+
+    <table>
+      <tr>
+        <td>Documento</td>
+        <td>Nombres</td>
+        <td>Apellidos</td>
+        <td>Especialidad</td>
+        <td></td>
+      </tr>
+      @{
+        foreach (var medico in Model.Medicos)
+        {
+          <tr>
+            <td>@medico.Documento</td>
+            <td>@medico.Nombre</td>
+            <td>@medico.Apellidos</td>
+            <td>@medico.Especialidad</td>
+            <td><a asp-page="Paciente" asp-route-idPaciente="@Model.IdPaciente" asp-route-idMedico="@medico.Id">Asignar</a></td>
+          </tr>
+        }
+      }
+    </table>
+  </section>
+</main>
+</html>
