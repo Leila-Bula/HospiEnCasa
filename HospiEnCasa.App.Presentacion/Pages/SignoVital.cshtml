@@ -1,0 +1,49 @@
+@page
+@model TipoSignoModel;
+@{
+    ViewData["Title"] = "Signos Vitales";
+}
+
+<main class="contenedor sombra">
+    <section>
+        <h2>Registro Signos Vitales</h2>
+
+        
+        <form class="formulario" method="post">
+
+            <fieldset>
+
+                <div class="contenedor-campos">
+
+                    <div class="campo">
+                        <label>Signo Vital</label>
+                        <select class="input-text" asp-for="NuevoSigno.TipoSigno">
+                            <option value="masculino">-- Seleccione --</option>
+                            <option value="tensionArterial">Tension Arterial</option>
+                            <option value="frecuenciaCardiaca">Frecuencia Cardiaca</option>
+                            <option value="frecuenciaRespiratoria">Frecuencia Respiratoria</option>
+                            <option value="saturacionOxigeno">Saturacion Oxigeno</option>
+                            <option value="temperaturaCorporal">Temperatura Corporal</option>
+                        </select>
+                    </div> 
+
+                        <div class="campo">
+                        <label>Valor</label>
+                        <input class="input-text" type="text" placeholder="Valor" asp-for="NuevoSigno.Valor" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>Fecha y Hora</label>
+                        <input type="datetime-local" placeholder="Fecha y Hora" asp-for= "NuevoSigno.FechaHora">
+                    </div>                 
+                    
+
+                </div>  <!-- .contenedor-campos   -->
+
+                <div class="alinear-derecha flex color-enviar">
+                    <input class="boton" type="submit" value="Registrar">
+                </div>
+
+            </fieldset>
+
+        </form>
