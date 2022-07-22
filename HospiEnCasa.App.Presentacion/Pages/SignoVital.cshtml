@@ -1,5 +1,5 @@
 @page
-@model TipoSignoModel;
+@model SignoVitalModel;
 @{
     ViewData["Title"] = "Signos Vitales";
 }
@@ -14,10 +14,16 @@
             <fieldset>
 
                 <div class="contenedor-campos">
+                     </div> 
+
+                        <div class="campo">
+                        <label>Documento Paciente</label>
+                        <input class="input-text" type="text" placeholder="Documento" asp-for="documentoPaciente" required>
+                    </div>
 
                     <div class="campo">
                         <label>Signo Vital</label>
-                        <select class="input-text" asp-for="NuevoSigno.TipoSigno">
+                        <select class="input-text" asp-for="NuevoSigno.Signo" required>
                             <option value="">-- Seleccione --</option>
                             <option value="tensionArterial">Tension Arterial</option>
                             <option value="frecuenciaCardiaca">Frecuencia Cardiaca</option>
@@ -34,7 +40,7 @@
 
                     <div class="campo">
                         <label>Fecha y Hora</label>
-                        <input type="datetime-local" placeholder="Fecha y Hora" asp-for= "NuevoSigno.FechaHora">
+                        <input type="datetime-local" placeholder="Fecha y Hora" asp-for= "NuevoSigno.FechaHora" required>
                     </div>                 
                     
 

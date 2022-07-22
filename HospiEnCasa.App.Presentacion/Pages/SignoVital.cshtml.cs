@@ -17,20 +17,19 @@ namespace HospiEnCasa.App.Presentacion.Pages
         public SignoVital NuevoSigno {get;set;} 
         public bool isAdded {get;set;}
         public bool Post {get;set;}
+        [BindProperty]
+        public int documentoPaciente {get;set;}
 
         public SignoVitalModel(IRepositorioSigno repositorioSignoVital)
         {
             this.repositorioSignoVital = repositorioSignoVital;
-            NuevoSigno = new List<SignoVital> {
-                new SignoVital {FechaHora = NuevoSigno.FechaHora,Valor =NuevoSigno.Valor, Signo = NuevoSigno.TipoSigno}
-            };
-
+            NuevoSigno = new SignoVital();                           
             Post=false;
         }
 
         public void OnPost()
         {
-            NuevoSigno = repositorioSignoVital.AddSignoVital(NuevoSigno);
+            NuevoSigno = repositorioSignoVital.AddSignoVital(NuevoSigno, documentoPaciente);
             Post=true;
             if(NuevoSigno!=null){
                 isAdded=true;

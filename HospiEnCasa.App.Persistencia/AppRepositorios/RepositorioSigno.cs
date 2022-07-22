@@ -17,6 +17,9 @@ namespace HospiEnCasa.App.Persistencia
         SignoVital IRepositorioSigno.AddSignoVital(SignoVital SignosVitales, int idPaciente)
         {
             var signoAdicionado = _appContext.SignoVitales.Add(SignosVitales);
+            var paciente = _appContext.Pacientes.FirstOrDefault(p => p.Documento == idPaciente);
+            _appContext.Entry(paciente).Collection(p => p.SignosVitales).Load();
+            paciente.SignosVitales.Add(signoAdicionado.Entity);
             _appContext.SaveChanges();
             return signoAdicionado.Entity;
         }
@@ -24,9 +27,11 @@ namespace HospiEnCasa.App.Persistencia
          {
             var signoEncontrado = _appContext.SignoVitales.FirstOrDefault(s => s.Id == idSignoVital);
             if(signoEncontrado == null)
-                return;
-                _appContext.SignoVitales.Remove(signoEncontrado);
-                _appContext.SaveChanges();
+            {
+                return;  
+            }                              
+            _appContext.SignoVitales.Remove(signoEncontrado);
+            _appContext.SaveChanges();
          }
          IEnumerable<SignoVital> IRepositorioSigno.GetAllSigno()
          {
@@ -38,14 +43,14 @@ namespace HospiEnCasa.App.Persistencia
         }
         SignoVital IRepositorioSigno.UpdateSigno(SignoVital SignosVitales)
         {
-            var signoEncontrado = _appContext.SignoVitales.FirstOrDefault(s => s.Id == SignoVital.Id);
+            var signoEncontrado = _appContext.SignoVitales.FirstOrDefault(s => s.Id == SignosVitales.Id);
             if (signoEncontrado != null)
             {
-              signoEncontrado.Valor = signoEncontrado.Valor;
-              
-               
-
+              signoEncontrado.Valor = SignosVitales.Valor;
+              signoEncontrado.FechaHora = SignosVitales.FechaHora;
+              signoEncontrado.Signo = SignosVitales.Signo;                             
             }
+            _appContext.SaveChanges();
             return signoEncontrado;
         }
 
