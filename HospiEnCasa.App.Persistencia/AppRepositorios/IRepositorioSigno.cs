@@ -6,8 +6,8 @@ namespace HospiEnCasa.App.Persistencia
     public interface IRepositorioSigno
     {
         IEnumerable<SignoVital> GetAllSigno();
-        SignoVital AddSignoVital(SignoVital signosVitales, int idPaciente);
-        SignoVital UpdateSigno(SignoVital signosVitales);
+        SignoVital AddSignoVital(SignoVital SignosVitales, int idPaciente);
+        SignoVital UpdateSigno(SignoVital SignosVitales);
         void DeleteSigno(int idSignoVitales);
         SignoVital GetSigno(int idSignoVitales);
     }

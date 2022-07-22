@@ -14,9 +14,9 @@ namespace HospiEnCasa.App.Persistencia
             _appContext = appContext;
         }
 
-        SignoVital IRepositorioSigno.AddSignoVital(SignoVital signosVitales,)
+        SignoVital IRepositorioSigno.AddSignoVital(SignoVital SignosVitales, int idPaciente)
         {
-            var signoAdicionado = _appContext.SignoVitales.Add(signosVitales);
+            var signoAdicionado = _appContext.SignoVitales.Add(SignosVitales);
             _appContext.SaveChanges();
             return signoAdicionado.Entity;
         }
@@ -24,11 +24,9 @@ namespace HospiEnCasa.App.Persistencia
          {
             var signoEncontrado = _appContext.SignoVitales.FirstOrDefault(s => s.Id == idSignoVital);
             if(signoEncontrado == null)
-            {
                 return;
-            }
-            _appContext.SignoVitales.Remove(signoEncontrado);
-            _appContext.SaveChanges();
+                _appContext.SignoVitales.Remove(signoEncontrado);
+                _appContext.SaveChanges();
          }
          IEnumerable<SignoVital> IRepositorioSigno.GetAllSigno()
          {
@@ -38,17 +36,16 @@ namespace HospiEnCasa.App.Persistencia
         {
             return _appContext.SignoVitales.FirstOrDefault(s => s.Id == idSignoVitales);
         }
-        SignoVital IRepositorioSigno.UpdateSigno(SignoVital signosVitales)
+        SignoVital IRepositorioSigno.UpdateSigno(SignoVital SignosVitales)
         {
-            var signoEncontrado = _appContext.SignoVitales.FirstOrDefault(s => s.Id == signosVitales.Id);
-            /*if (signoEncontrado != null)
+            var signoEncontrado = _appContext.SignoVitales.FirstOrDefault(s => s.Id == SignoVital.Id);
+            if (signoEncontrado != null)
             {
-                signoEncontrado.tensionArterial = SignoVitales.tensionArterial;
-                signoEncontrado.frecuenciaCardiaca = SignoVitales.frecuenciaCardiaca;
-                signoEncontrado.frecuenciaRespiratoria = SignoVitales.frecuenciaRespiratoria;
-                _appContext.SaveChanges();
+              signoEncontrado.Valor = signoEncontrado.Valor;
+              
+               
 
-            }*/
+            }
             return signoEncontrado;
         }
 
