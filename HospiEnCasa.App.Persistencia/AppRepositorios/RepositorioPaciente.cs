@@ -35,8 +35,7 @@ namespace HospiEnCasa.App.Persistencia
         }
         Paciente IRepositorioPaciente.GetPaciente(int idPaciente)
         {
-            return _appContext.Pacientes.FirstOrDefault(p => p.Id == idPaciente);
-
+            return _appContext.Pacientes.FirstOrDefault(p=>p.Id==idPaciente);
         }
         Paciente IRepositorioPaciente.UpdatePaciente(Paciente paciente)
         {
@@ -62,6 +61,21 @@ namespace HospiEnCasa.App.Persistencia
             return pacienteEncontrado;
         }
         
-
+        bool IRepositorioPaciente.AddMedico(int idPaciente, int idMedico)
+        {
+            try
+            {
+                var paciente = _appContext.Pacientes.FirstOrDefault(p => p.Id == idPaciente);
+                var medico = _appContext.Medicos.FirstOrDefault(m => m.Id == idMedico);
+                paciente.Medico = medico;
+                _appContext.SaveChanges();
+                return true;
+            }
+            catch (System.Exception)
+            {
+                return false;
+            }
+            
+        }
     }
 }
