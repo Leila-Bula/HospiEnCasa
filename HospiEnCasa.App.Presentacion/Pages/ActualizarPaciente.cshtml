@@ -1,0 +1,140 @@
+@page
+@model ActualizarPacienteModel;
+@using HospiEnCasa.App.Dominio;
+@{
+    ViewData["Title"] = "Actualización datos de Paciente";
+}
+
+<main class="contenedor sombra">
+    <section>
+        <h2>Actualizar Datos de Paciente</h2>
+        <form class="formulario" method="post">
+
+            <fieldset>
+
+                <div class="contenedor-campos">
+
+                    <input type="hidden" asp-for="NuevoPaciente.Id">
+                    <div class="campo">
+                        <label>Nombre</label>
+                        <input class="input-text" type="text" placeholder="Nombre" asp-for="NuevoPaciente.Nombre" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>Apellidos</label>
+                        <input class="input-text" type="text" placeholder="Apellidos" asp-for="NuevoPaciente.Apellidos" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>N° Documento</label>
+                        <input class="input-text" type="text" placeholder="Documento de identidad" asp-for="NuevoPaciente.Documento" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>Teléfono</label>
+                        <input class="input-text" type="number" placeholder="N° Telefónico" asp-for="NuevoPaciente.Telefono" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>Género</label>
+                        <select class="input-text" asp-for="NuevoPaciente.Genero" required>
+                            <option value="masculino">-- Seleccione --</option>
+                            <option value="masculino">Masculino</option>
+                            <option value="femenino">Femenino</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label>Dirección</label>
+                        <input class="input-text" type="text" placeholder="Dirección de Residencia" asp-for="NuevoPaciente.Direccion" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>Ciudad</label>
+                        <input class="input-text" type="text" placeholder="Ciudad de Residencia" asp-for="NuevoPaciente.Ciudad" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>Fecha de Nacimiento</label>
+                        <input class="input-text" type="date" asp-for="NuevoPaciente.FechaNacimiento" required>
+                    </div>
+
+                    <div id="map" style="display: none;"></div>
+                    <div class="campo">
+                        <label>Latitud<span>(opcional)</span></label>
+                        <input id="lat" class="input-text" placeholder="Latitud" asp-for="NuevoPaciente.Latitud">
+                    </div>
+
+                    <div class="campo">
+                        <label>Longitud<span>(opcional)</span></label>
+                        <input id="lng" class="input-text" placeholder="Longitud" asp-for="NuevoPaciente.Longitud">
+                    </div>
+                    
+
+                </div>  <!-- .contenedor-campos   -->
+
+                <div class="alinear-derecha flex color-enviar">
+                    <input class="boton" type="submit" value="Guardar">
+                </div>
+
+            </fieldset>
+
+        </form>
+
+        <script>
+        // Note: This example requires that you consent to location sharing when
+        // prompted by your browser. If you see the error "The Geolocation service
+        // failed.", it means you probably did not give permission for the browser to
+        // locate you.
+  
+        function initMap() {
+          var map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: -34.397, lng: 150.644},
+            zoom: 6
+          });
+          var infoWindow = new google.maps.InfoWindow({map: map});
+  
+          // Try HTML5 geolocation.
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+              var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude 
+            };
+                
+              infoWindow.setPosition(pos);
+              infoWindow.setContent('Location found.');
+              document.getElementById("lat").value = pos['lat'];
+              document.getElementById("lng").value = pos['lng'];
+              map.setCenter(pos);
+            }, function() {
+              handleLocationError(true, infoWindow, map.getCenter());
+            });
+          } else {
+            // Browser doesn't support Geolocation
+            handleLocationError(false, infoWindow, map.getCenter());
+          }
+        }
+  
+        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+          infoWindow.setPosition(pos);
+          infoWindow.setContent(browserHasGeolocation ?
+                                'Error: The Geolocation service failed.' :
+                                'Error: Your browser doesn\'t support geolocation.');
+        }
+        
+  
+        
+        
+      </script>
+      <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=XXXXXXXXX&callback=initMap">
+      </script>
+
+    </section>
+
+
+
+</main>
+
+</html>
