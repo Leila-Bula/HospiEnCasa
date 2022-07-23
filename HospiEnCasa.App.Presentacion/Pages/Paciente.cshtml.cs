@@ -28,7 +28,7 @@ namespace HospiEnCasa.App.Presentacion.Pages {
                 NuevoPaciente=repoPaciente.GetPaciente(idPaciente.Value);
                 Action = "Actualizar";
                 if(idMedico.HasValue){
-                    repoPaciente.AddMedico(NuevoPaciente.Id,idMedico.Value);
+                   // repoPaciente.AddMedico(NuevoPaciente.Id,idMedico.Value);
                 }
             }else{
                 NuevoPaciente = new Paciente();
