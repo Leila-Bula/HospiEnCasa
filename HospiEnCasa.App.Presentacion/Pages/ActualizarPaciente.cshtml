@@ -17,31 +17,32 @@
                     <input type="hidden" asp-for="NuevoPaciente.Id">
                     <div class="campo">
                         <label>Nombre</label>
-                        <input class="input-text" type="text" placeholder="Nombre" asp-for="NuevoPaciente.Nombre" required>
+                        <input class="input-text" type="text" placeholder="Nombre" asp-for="NuevoPaciente.Nombre" required readonly>
                     </div>
 
                     <div class="campo">
                         <label>Apellidos</label>
-                        <input class="input-text" type="text" placeholder="Apellidos" asp-for="NuevoPaciente.Apellidos" required>
+                        <input class="input-text" type="text" placeholder="Apellidos" asp-for="NuevoPaciente.Apellidos" required readonly>
                     </div>
 
                     <div class="campo">
                         <label>N° Documento</label>
-                        <input class="input-text" type="text" placeholder="Documento de identidad" asp-for="NuevoPaciente.Documento" required>
+                        <input class="input-text" type="text" placeholder="Documento de identidad" asp-for="NuevoPaciente.Documento" required readonly>
+                    </div>
+
+
+                    <div class="campo">
+                        <label>Género</label>
+                        <select class="input-text" asp-for="NuevoPaciente.Genero" required readonly>
+                            <option value="masculino">-- Seleccione --</option>
+                            <option value="masculino">Masculino</option>
+                            <option value="femenino">Femenino</option>
+                        </select>
                     </div>
 
                     <div class="campo">
                         <label>Teléfono</label>
                         <input class="input-text" type="number" placeholder="N° Telefónico" asp-for="NuevoPaciente.Telefono" required>
-                    </div>
-
-                    <div class="campo">
-                        <label>Género</label>
-                        <select class="input-text" asp-for="NuevoPaciente.Genero" required>
-                            <option value="masculino">-- Seleccione --</option>
-                            <option value="masculino">Masculino</option>
-                            <option value="femenino">Femenino</option>
-                        </select>
                     </div>
 
                     <div class="campo">
@@ -56,18 +57,18 @@
 
                     <div class="campo">
                         <label>Fecha de Nacimiento</label>
-                        <input class="input-text" type="date" asp-for="NuevoPaciente.FechaNacimiento" required>
+                        <input class="input-text" type="date" asp-for="NuevoPaciente.FechaNacimiento" required readonly>
                     </div>
 
                     <div id="map" style="display: none;"></div>
                     <div class="campo">
                         <label>Latitud<span>(opcional)</span></label>
-                        <input id="lat" class="input-text" placeholder="Latitud" asp-for="NuevoPaciente.Latitud">
+                        <input id="lat" class="input-text" placeholder="Latitud" asp-for="NuevoPaciente.Latitud" readonly>
                     </div>
 
                     <div class="campo">
                         <label>Longitud<span>(opcional)</span></label>
-                        <input id="lng" class="input-text" placeholder="Longitud" asp-for="NuevoPaciente.Longitud">
+                        <input id="lng" class="input-text" placeholder="Longitud" asp-for="NuevoPaciente.Longitud" readonly>
                     </div>
                     
 
