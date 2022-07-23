@@ -35,7 +35,9 @@ namespace HospiEnCasa.App.Persistencia
         }
         Paciente IRepositorioPaciente.GetPaciente(int idPaciente)
         {
-            return _appContext.Pacientes.FirstOrDefault(p=>p.Id==idPaciente);
+            var paciente = _appContext.Pacientes.FirstOrDefault(p=>p.Id==idPaciente);
+            _appContext.Entry(paciente).Reference(paciente=>paciente.Medico).Load();
+            return paciente;
         }
         Paciente IRepositorioPaciente.UpdatePaciente(Paciente paciente)
         {

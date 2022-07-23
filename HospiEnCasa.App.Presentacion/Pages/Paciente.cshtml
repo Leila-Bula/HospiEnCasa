@@ -71,15 +71,18 @@
                     
                     @{
                         if(Model.Action=="Actualizar"){
+                            string estado;
+                            string value;
+                            if(Model.NuevoPaciente.Medico==null){
+                                estado = "Asignar ahora";
+                                value = "";
+                            }else{
+                                estado = "Cambiar";
+                                value = Model.NuevoPaciente.Medico.Nombre + " " + Model.NuevoPaciente.Medico.Apellidos;
+                            }
                             <div class="campo">
-                                <label>Medico Asignado: @Model.NuevoPaciente.Medico.Id</label>
-                                @{
-                                    if(Model.NuevoPaciente.Medico==null){
-                                        <a asp-page="/Asignar" asp-route-idPaciente="@Model.NuevoPaciente.Id">Asignar Ahora</a>
-                                    }else{
-                                        <span>@Model.NuevoPaciente.Medico.Nombre @Model.NuevoPaciente.Medico.Apellidos</span>
-                                    }
-                                }
+                                <label>Medico Asignado: <a asp-page="/Asignar" asp-route-idPaciente="@Model.NuevoPaciente.Id">@estado</a></label>
+                                <input class="input-text" value="@value">
                             </div>
                         }
                     }
@@ -105,8 +108,15 @@
                         alert("Ha ocurrido un error al agregar el paciente")
                     </script>
                 }
+            }else{
+                if(Model.MedAdded){
+                    <script>
+                        alert("El Medico se ha asignado al Paciente correctamente")
+                    </script>
+                }
             }
         }
+
 
         <script>
             // Note: This example requires that you consent to location sharing when

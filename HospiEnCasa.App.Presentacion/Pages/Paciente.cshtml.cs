@@ -17,6 +17,7 @@ namespace HospiEnCasa.App.Presentacion.Pages {
         public bool isAdded {get;set;}
         public bool Post {get;set;}
         public string Action {get;set;}
+        public bool MedAdded {get;set;}
 
         public PacienteModel(IRepositorioPaciente repositorioPaciente){
             repoPaciente = repositorioPaciente;
@@ -28,7 +29,7 @@ namespace HospiEnCasa.App.Presentacion.Pages {
                 NuevoPaciente=repoPaciente.GetPaciente(idPaciente.Value);
                 Action = "Actualizar";
                 if(idMedico.HasValue){
-                    repoPaciente.AddMedico(NuevoPaciente.Id,idMedico.Value);
+                    MedAdded = repoPaciente.AddMedico(NuevoPaciente.Id,idMedico.Value);
                 }
             }else{
                 NuevoPaciente = new Paciente();
