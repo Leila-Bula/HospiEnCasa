@@ -62,7 +62,6 @@ namespace HospiEnCasa.App.Persistencia
             }
             return pacienteEncontrado;
         }
-        
         bool IRepositorioPaciente.AddMedico(int idPaciente, int idMedico)
         {
             try
