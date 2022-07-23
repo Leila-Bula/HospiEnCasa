@@ -1,5 +1,6 @@
 @page
 @model FamiliarDesignadoModel
+@using HospiEnCasa.App.Dominio;
 @{
     ViewData["Title"] = "Familiar Designado";
 }
@@ -62,8 +63,9 @@
 
                 </div>  <!-- .contenedor-campos   -->
 
-                <div class="alinear-derecha flex color-enviar">
-                    <input class="boton" type="submit" value="Registrar">
+              <div class="alinear-derecha flex color-enviar">
+                @Model.NuevoFamiliar.Id
+                    <input class="boton" type="submit" value="@Model.Action">
                 </div>
 
             </fieldset>
@@ -74,11 +76,11 @@
             if(Model.Post){
                 if(Model.isAdded){
                     <script>
-                        alert("El Paciente ha sido agregado correctamente")
+                        alert("El familiar ha sido agregado correctamente")
                     </script>
                 }else{
                     <script>
-                        alert("Ha ocurrido un error al agregar el paciente")
+                        alert("Ha ocurrido un error al agregar el familiar")
                     </script>
                 }
             }

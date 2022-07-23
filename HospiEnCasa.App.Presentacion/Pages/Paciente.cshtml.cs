@@ -30,6 +30,7 @@ namespace HospiEnCasa.App.Presentacion.Pages {
                 Action = "Actualizar";
                 if(idMedico.HasValue){
                     MedAdded = repoPaciente.AddMedico(NuevoPaciente.Id,idMedico.Value);
+                   // repoPaciente.AddMedico(NuevoPaciente.Id,idMedico.Value);
                 }
             }else{
                 NuevoPaciente = new Paciente();

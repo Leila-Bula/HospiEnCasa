@@ -12,27 +12,52 @@ namespace HospiEnCasa.App.Presentacion.Pages
 {
     public class FamiliarDesignadoModel : PageModel
     {
-        public readonly IRepositorioFamiliarDesignado RepositorioFamiliar;
+        public readonly IRepositorioFamiliarDesignado repoFamiliar;
         [BindProperty]
         public FamiliarDesignado NuevoFamiliar {get; set;}
         [BindProperty]
         public int idPaciente {get;set;}
         public bool isAdded {get;set;}
         public bool Post {get;set;}
+        public string Action {get;set;}
 
         public FamiliarDesignadoModel(IRepositorioFamiliarDesignado RepositorioFamiliar){
-            this.RepositorioFamiliar = RepositorioFamiliar;
-            NuevoFamiliar = new FamiliarDesignado();
+            repoFamiliar = RepositorioFamiliar;
+            
             Post=false;
         }
-        public void OnPost(){
-            NuevoFamiliar= RepositorioFamiliar.AddFamiliar(NuevoFamiliar, idPaciente);
-            Post=true;
-            if(NuevoFamiliar!=null){
-                isAdded=true;
+
+         public IActionResult OnGet(int? idFamiliar){
+            if(idFamiliar.HasValue){
+                NuevoFamiliar=repoFamiliar.GetFamiliar(idFamiliar.Value);
+                Action = "Actualizar";
             }else{
-                isAdded=false;
+                NuevoFamiliar = new FamiliarDesignado();
+                Action="Registrar";
             }
+            return Page();
         }
+
+        public void OnPost(){
+            if(Action=="Registrar"){
+                NuevoFamiliar= repoFamiliar.AddFamiliar(NuevoFamiliar, idPaciente);
+                Post=true;
+                if(NuevoFamiliar!=null){
+                    isAdded=true;
+                }else{
+                    isAdded=false;
+                }
+            }else{
+                NuevoFamiliar = repoFamiliar.UpdateFamiliar(NuevoFamiliar);
+                Post=true;
+                if(NuevoFamiliar!=null){
+                    isAdded=true;
+                }else{
+                    isAdded=false;
+                }
+             }
+        
+        }
+        
     }
 }

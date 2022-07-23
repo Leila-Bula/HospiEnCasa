@@ -32,28 +32,34 @@ namespace HospiEnCasa.App.Persistencia
             _appContext.SaveChanges();
 
         }
-      
+       IEnumerable<FamiliarDesignado> IRepositorioFamiliarDesignado.GetAllfamiliar()
+         {
+            return _appContext.FamiliarDesignados;
+         }
+         
         FamiliarDesignado IRepositorioFamiliarDesignado.GetFamiliar(int idFamiliar)
         {
             return _appContext.FamiliarDesignados.FirstOrDefault(p => p.Id == idFamiliar);
 
         }
-        FamiliarDesignado IRepositorioFamiliarDesignado.UpdateFamiliar(FamiliarDesignado FamiliarDesignado)
+        
+        FamiliarDesignado IRepositorioFamiliarDesignado.UpdateFamiliar(FamiliarDesignado familiarDesignado)
         {
-            var FamiliarEncontrado = _appContext.FamiliarDesignados.FirstOrDefault(p => p.Id == FamiliarDesignado.Id);
+            var FamiliarEncontrado = _appContext.FamiliarDesignados.Single(p => p.Id == familiarDesignado.Id);
             if (FamiliarEncontrado != null)
             {
-                FamiliarEncontrado.Documento = FamiliarDesignado.Documento;
-                FamiliarEncontrado.Nombre = FamiliarDesignado.Nombre;
-                FamiliarEncontrado.Apellidos = FamiliarDesignado.Apellidos;
-                FamiliarEncontrado.Telefono = FamiliarDesignado.Telefono;
-                FamiliarEncontrado.Genero = FamiliarDesignado.Genero;
-                FamiliarEncontrado.Parentesco = FamiliarDesignado.Parentesco;
-                FamiliarEncontrado.Correo = FamiliarDesignado.Correo;
+                //FamiliarEncontrado.Documento = FamiliarDesignado.Documento;
+                FamiliarEncontrado.Nombre = familiarDesignado.Nombre;
+                FamiliarEncontrado.Apellidos = familiarDesignado.Apellidos;
+                FamiliarEncontrado.Telefono = familiarDesignado.Telefono;
+                FamiliarEncontrado.Genero = familiarDesignado.Genero;
+                FamiliarEncontrado.Parentesco = familiarDesignado.Parentesco;
+                FamiliarEncontrado.Correo = familiarDesignado.Correo;
               
-                _appContext.SaveChanges();
 
             }
+             _appContext.SaveChanges();
+
             return FamiliarEncontrado;
         }
     }

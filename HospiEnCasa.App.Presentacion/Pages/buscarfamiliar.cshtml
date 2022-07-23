@@ -1,0 +1,42 @@
+﻿@page
+@model buscarfamiliarModel;
+@using HospiEnCasa.App.Dominio;
+@{
+  ViewData["Title"] = "Familiares";
+}
+
+<h2>FAMILIARES REGISTRADOS</h2>
+
+<main class="contenedor sombra">
+  
+  <table class="tablaFamiliar">
+    <thead>
+      <tr>
+        <th>Doc. Id.</th>
+        <th>Nombres</th>
+        <th>Apellidos</th>
+        <th>Más</th>
+      </tr>
+    </thead>
+    <tbody>
+      @{
+        foreach (var familiar in Model.Familiares)
+        {
+            <tr>
+              <td>@familiar.Documento</td>
+              <td>@familiar.Nombre</td>
+              <td>@familiar.Apellidos</td>
+              <td><a class="boton-detalles" asp-page="/Familiar-Designado" asp-route-idFamiliar="@familiar.Id"><bold>Detalles</bold></a></td>
+            </tr>
+        }
+      }
+    </tbody>
+  </table>
+
+  <div class="alinear-derecha flex">
+      <a class="boton" asp-page="/Index">Regresar</a>
+  </div>
+
+</main>
+
+</html>
